@@ -1,0 +1,4 @@
+Python 3.12.3
+torch 2.14.0+cpu
+numpy 2.5.1
+cuda False

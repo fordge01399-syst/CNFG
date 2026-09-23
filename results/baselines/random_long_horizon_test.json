@@ -1,0 +1,10 @@
+{
+  "agent": "random",
+  "split": "long_horizon_test",
+  "tasks": 200,
+  "full_task_success": 0,
+  "action_accuracy": 0.3115618279569892,
+  "path_efficiency_successes": 0,
+  "invalid_action_rate": 0.0,
+  "mean_steps": 106.72
+}

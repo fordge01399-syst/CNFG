@@ -1,0 +1,10 @@
+{
+  "agent": "random",
+  "split": "iid_test",
+  "tasks": 200,
+  "full_task_success": 0,
+  "action_accuracy": 0.3181888888888889,
+  "path_efficiency_successes": 0,
+  "invalid_action_rate": 0.0,
+  "mean_steps": 100.96
+}

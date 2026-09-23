@@ -1,0 +1,10 @@
+{
+  "agent": "greedy",
+  "split": "novel_layout_test",
+  "tasks": 200,
+  "full_task_success": 0,
+  "action_accuracy": 0.55545,
+  "path_efficiency_successes": 0,
+  "invalid_action_rate": 0.0,
+  "mean_steps": 101.68
+}

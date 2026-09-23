@@ -1,0 +1,49 @@
+{
+  "model": "cnfg",
+  "seed": 42,
+  "parameters": 63242,
+  "best_validation": 0.9095733940984742,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7289017115239025,
+      "validation": {
+        "accuracy": 0.88531541146269,
+        "loss": 0.3602534007110107
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3014306788808305,
+      "validation": {
+        "accuracy": 0.9061697770342381,
+        "loss": 0.2723952953503382
+      }
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.2623924052154552,
+      "validation": {
+        "accuracy": 0.9091118866999337,
+        "loss": 0.2600704717341773
+      }
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.25299554804958585,
+      "validation": {
+        "accuracy": 0.9095733940984742,
+        "loss": 0.24866906063542368
+      }
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.2470600674725332,
+      "validation": {
+        "accuracy": 0.9094868614612478,
+        "loss": 0.24547576259707432
+      }
+    }
+  ],
+  "runtime_seconds": 8.806316614151001
+}

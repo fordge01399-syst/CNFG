@@ -1,0 +1,17 @@
+{
+  "splits": {
+    "train": 12000,
+    "validation": 2000,
+    "iid_test": 500,
+    "novel_layout_test": 500,
+    "novel_object_test": 500,
+    "novel_task_test": 500,
+    "long_horizon_test": 500,
+    "distractor_test": 500,
+    "partial_observation_test": 500,
+    "final_independent_test": 1000
+  },
+  "cross_split_duplicate_tasks": [],
+  "final_test_clean": true,
+  "protocol": "audit before final checkpoint selection"
+}

@@ -1,0 +1,49 @@
+{
+  "model": "gru",
+  "seed": 43,
+  "parameters": 60008,
+  "best_validation": 0.9287625514284892,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.917535663285154,
+      "validation_action_accuracy": 0.811778922231493
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.40732115665648844,
+      "validation_action_accuracy": 0.8681128981212418
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.30327828196769063,
+      "validation_action_accuracy": 0.892712259400984
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.25847125893577616,
+      "validation_action_accuracy": 0.9065799695025463
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.23666738528520503,
+      "validation_action_accuracy": 0.9146071294990937
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.22027530869904985,
+      "validation_action_accuracy": 0.9131973415427108
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.2126773917611609,
+      "validation_action_accuracy": 0.9268061109992232
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.20009292995041988,
+      "validation_action_accuracy": 0.9287625514284892
+    }
+  ],
+  "runtime_seconds": 36.43912434577942
+}

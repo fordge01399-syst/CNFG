@@ -1,0 +1,7 @@
+{
+  "gap": 8,
+  "tasks": 200,
+  "full_task_success": 0.15,
+  "step_accuracy": 0.25558333333333333,
+  "mean_steps": 88.54
+}

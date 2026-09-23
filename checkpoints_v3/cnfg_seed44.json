@@ -1,0 +1,49 @@
+{
+  "model": "cnfg",
+  "seed": 44,
+  "parameters": 138539,
+  "best_validation": 0.9406738211007855,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7015557488862504,
+      "validation_action_accuracy": 0.8877348447794688
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.24744840679650612,
+      "validation_action_accuracy": 0.9233535690652243
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.20170684602666408,
+      "validation_action_accuracy": 0.9222314929366746
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.18565741070407502,
+      "validation_action_accuracy": 0.9335097965877377
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.17579363571836593,
+      "validation_action_accuracy": 0.9384008976609028
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.16954497723503315,
+      "validation_action_accuracy": 0.9382858129297695
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.16423640685512664,
+      "validation_action_accuracy": 0.9349483557269039
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.16083552450575728,
+      "validation_action_accuracy": 0.9406738211007855
+    }
+  ],
+  "runtime_seconds": 52.319706439971924
+}

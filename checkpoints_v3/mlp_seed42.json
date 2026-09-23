@@ -1,0 +1,49 @@
+{
+  "model": "mlp",
+  "seed": 42,
+  "parameters": 13448,
+  "best_validation": 0.8730039991944069,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.1969498446647158,
+      "validation_action_accuracy": 0.7508990994619789
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.45678639538744664,
+      "validation_action_accuracy": 0.8488362056564145
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.3524891106372184,
+      "validation_action_accuracy": 0.861207814253244
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.32827385657645286,
+      "validation_action_accuracy": 0.8669045084443422
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.31631364118545613,
+      "validation_action_accuracy": 0.869465143712058
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.30749703119409844,
+      "validation_action_accuracy": 0.8715078976896741
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.3010265288200784,
+      "validation_action_accuracy": 0.8730039991944069
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.2963864380057822,
+      "validation_action_accuracy": 0.8717380671519406
+    }
+  ],
+  "runtime_seconds": 26.769716501235962
+}

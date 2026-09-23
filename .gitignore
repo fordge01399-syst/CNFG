@@ -1,0 +1,24 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+
+# Generated logs and temporary outputs
+logs/
+*.log
+
+# Large generated raw rollout trajectories and exploratory scaling data
+results/**/*_trajectories.jsonl
+results/pre_feature_fix/
+data_scaling/
+
+# Generated datasets are distributed in the complete release asset because GitHub
+# rejects individual files above its regular repository limit.
+data/
+data_v3/
+data_v4/
+
+# Duplicate historical datasets/checkpoints retained locally but not needed in git
+# The complete v4 deliverable is attached to the GitHub release.

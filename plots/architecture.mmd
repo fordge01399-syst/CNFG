@@ -1,0 +1,17 @@
+flowchart TD
+  A[Environment state] --> B[Observation encoder]
+  G[Goal] --> C[Goal/state features]
+  B --> C
+  C --> D[Typed unary representation]
+  C --> E[Ordered pair relations]
+  D --> F[CNFG composition + GRU memory]
+  E --> F
+  F --> H[Action scores]
+  H --> I[Available-action mask / selection]
+  I --> J[Environment step]
+  J --> A
+  J --> K[Reward, done, info]
+  L[Original project: full composition] --> M[Final-state classifier]
+  M --> N[Answer]
+  classDef old fill:#fee2e2,stroke:#b91c1c;
+  class L,M,N old;
