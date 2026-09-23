@@ -213,3 +213,26 @@
 [3]: `results/corrected_summary_fixed.json` "Five-seed corrected closed-loop aggregate"  
 [4]: `results/recovery_summary.json` "Recovery stress-test aggregate"  
 [5]: `results/v2_summary.json` "Earlier aggregate retained for audit; superseded by corrected metric summary"
+
+
+## 20. Long-horizon improvement round: DAgger-style exposure training
+
+بدأت جولة تحسين جديدة تستهدف تراكم الأخطاء بدل الاكتفاء بالتعلم من المسارات الخبيرة. أضيف `scripts/train_dagger.py`، الذي يبدأ من checkpoints v4، ويشغّل الوكيل داخل بيئات large، ثم يمزج بين أفعال الوكيل وأفعال المخطط الخبير أثناء جمع الحالات. كل حالة يصل إليها الوكيل تُعاد تسميتها بالفعل الأمثل من **الحالة الفعلية الحالية**، لا من الحالة الخبيرة السابقة. هذا يدرّب النموذج على التعافي من انحرافاته دون تمرير المسار الأمثل إلى observation.
+
+استُخدمت خمس بذور، وست جولات تدريب لكل seed، و256 حلقة large في الجولة، مع احتمال أفعال نموذجية متزايد ومعدل فشل بيئي صغير أثناء جمع البيانات. اختير checkpoint حسب validation rollout فقط. النتائج مقارنةً بـv4:
+
+| Split | v4 CNFG | DAgger CNFG | التغير |
+|---|---:|---:|---:|
+| IID | 0.706 ± 0.005 | 0.586 ± 0.097 | تراجع؛ trade-off واضح |
+| Long horizon | 0.305 ± 0.083 | **0.864 ± 0.137** | تحسن +55.9 نقطة مئوية |
+| Final independent | 0.311 ± 0.099 | **0.508 ± 0.117** | تحسن +19.7 نقطة مئوية |
+| Novel layout | 0.860 ± 0.000 | 0.792 ± 0.057 | تراجع |
+| Partial observation | 0.718 ± 0.055 | 0.681 ± 0.128 | تراجع طفيف |
+
+النتيجة تثبت أن التعرض لأخطاء الوكيل وإعادة التخطيط من الحالة الحالية يعالجان التراكم طويل الأفق فعليًا. لكنها تكشف أيضًا أن التحسين المتخصص في large tasks جاء على حساب IID وبعض التعميمات. لذلك لا ينبغي اعتماد DAgger checkpoint كبديل وحيد لكل الاستخدامات قبل تنفيذ تدريب مختلط يوازن بين medium وlarge وpartial observations.
+
+على الاختبار المستقل، ارتفع النجاح إلى 50.8%، وهو تحسن مهم لكنه ليس نجاحًا كاملًا. وفي long-horizon بلغ النجاح 86.4%، مع action accuracy قدرها 72.5%. بقيت invalid actions في بعض الاختبارات، خصوصًا الملاحظات الجزئية، ولذلك لا يزال يلزم تدريب صلاحية الأفعال وتوازن البيانات.
+
+## 21. Current engineering recommendation
+
+أفضل نسخة حالية للتخطيط طويل الأفق هي DAgger CNFG، بينما v4 أكثر توازنًا في IID وpartial observation. المسار الهندسي التالي هو **mixed DAgger**: مزج 40% medium و40% large و20% partial-observation episodes، مع loss إضافية لصلاحية الفعل، ثم اختيار checkpoint من validation متعدد الأهداف لا من long-horizon وحده. سيحافظ ذلك على مكاسب DAgger مع تقليل خسارة IID.

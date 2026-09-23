@@ -128,3 +128,30 @@ python3 scripts/evaluate_baselines.py \
 ## تفسير النتائج
 
 لا ينبغي تفسير Action Accuracy كـFull Task Success. المقياس الأهم هو نجاح المهمة كاملة عبر rollout. التقرير الحالي يخلص إلى أن CNFG-Agent قابل للتشغيل مغلق الحلقة، لكنه أضعف من GRU وMLP في هذه التجربة، وفشل في الملاحظات الجزئية واختبار فجوة الذاكرة. هذه النتيجة مقصودة ومُسجلة كما هي.
+
+
+## DAgger long-horizon improvement
+
+لتدريب النسخة التي تتعرض لأخطائها وتعيد التخطيط من الحالة الفعلية:
+
+```bash
+for seed in 42 43 44 45 46; do
+  python3 scripts/train_dagger.py \
+    --data data_v4 \
+    --out checkpoints_dagger \
+    --init checkpoints_v4/cnfg_seed${seed}.pt \
+    --seed "$seed" --epochs 6 \
+    --episodes 256 --dim 96 --max-steps 140
+done
+```
+
+للتقييم:
+
+```bash
+python3 scripts/evaluate.py \
+  --checkpoint checkpoints_dagger/cnfg_seed42.pt \
+  --model cnfg --data data_v4 --out results/dagger_run \
+  --split long_horizon_test --max-tasks 200 --dim 96
+```
+
+هذه الجولة حسّنت long-horizon وfinal independent، لكنها سببت trade-off مع IID؛ لذلك لا تُعتبر نجاحًا شاملًا قبل تنفيذ mixed DAgger وتقييمه على جميع splits.

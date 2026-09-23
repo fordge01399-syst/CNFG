@@ -1,0 +1,44 @@
+{
+  "model": "cnfg",
+  "seed": 45,
+  "parameters": 138539,
+  "best_validation": 0.7862723214285714,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.3940231030610448,
+      "model_action_probability": 0.27,
+      "validation_action_accuracy": 0.6693080357142858
+    },
+    {
+      "epoch": 2,
+      "loss": 0.38803376781288534,
+      "model_action_probability": 0.34,
+      "validation_action_accuracy": 0.7567522321428571
+    },
+    {
+      "epoch": 3,
+      "loss": 0.3550643988419324,
+      "model_action_probability": 0.41000000000000003,
+      "validation_action_accuracy": 0.6155970982142858
+    },
+    {
+      "epoch": 4,
+      "loss": 0.3396740131138358,
+      "model_action_probability": 0.48000000000000004,
+      "validation_action_accuracy": 0.7066685267857142
+    },
+    {
+      "epoch": 5,
+      "loss": 0.40421769801469054,
+      "model_action_probability": 0.55,
+      "validation_action_accuracy": 0.7862723214285714
+    },
+    {
+      "epoch": 6,
+      "loss": 0.35944953639409505,
+      "model_action_probability": 0.6200000000000001,
+      "validation_action_accuracy": 0.7844308035714286
+    }
+  ]
+}

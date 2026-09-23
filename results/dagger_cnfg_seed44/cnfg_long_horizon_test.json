@@ -1,0 +1,11 @@
+{
+  "model": "cnfg",
+  "split": "long_horizon_test",
+  "tasks": 200,
+  "full_task_success": 1.0,
+  "action_accuracy": 0.8841977611940298,
+  "path_efficiency_successes": 0.8775279850746268,
+  "invalid_action_rate": 0.0,
+  "mean_steps": 29.63,
+  "failures": []
+}
