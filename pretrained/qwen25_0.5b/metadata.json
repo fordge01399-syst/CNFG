@@ -1,0 +1,8 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "hidden_size": 896,
+  "num_hidden_layers": 24,
+  "num_attention_heads": 14,
+  "vocab_size": 151936,
+  "parameters": 494032768
+}

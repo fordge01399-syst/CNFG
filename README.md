@@ -155,3 +155,16 @@ python3 scripts/evaluate.py \
 ```
 
 هذه الجولة حسّنت long-horizon وfinal independent، لكنها سببت trade-off مع IID؛ لذلك لا تُعتبر نجاحًا شاملًا قبل تنفيذ mixed DAgger وتقييمه على جميع splits.
+
+
+## Pretrained Qwen and weight-transfer pilot
+
+التقرير المطلوب موجود في `CNFG_PRETRAINED_WEIGHT_TRANSFER_REPORT.md` و`reports/CNFG_PRETRAINED_WEIGHT_TRANSFER_REPORT.md`. يستخدم المسار النموذج الرسمي `Qwen/Qwen2.5-0.5B-Instruct`، ويقارن Frozen-Qwen وFine-tuned-last-block وCNFG-side representation transfer:
+
+```bash
+python3 scripts/probe_qwen.py
+python3 scripts/qwen_transfer.py --data data_v4 --out experiments/pretrained_backbone --train-rows 256 --valid-rows 64 --epochs 1 --seed 42
+python3 scripts/evaluate_qwen.py --checkpoint experiments/pretrained_backbone/frozen_qwen_seed42.pt --split long_horizon_test --tasks 5 --seed 42
+```
+
+هذا pilot محدود بسبب كلفة Qwen على CPU. نتيجة closed-loop المتاحة لـFrozen-Qwen على خمس مهام long-horizon هي نجاح 0% ومعدل أفعال غير صالحة 98.14% بدون قناع الصلاحية؛ لذلك لا يجوز تقديمه كتحسن. النتائج السابقة لـDAgger CNFG محفوظة منفصلة في `results/dagger_summary.json`.

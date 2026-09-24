@@ -1,0 +1,22 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "seed": 42,
+  "hidden_size": 896,
+  "train_rows": 256,
+  "validation_rows": 64,
+  "training_seconds": 212.9509460926056,
+  "no_solution_leakage": "text excludes expert_action, optimal_steps, and action sequences",
+  "frozen_qwen": {
+    "checkpoint": "experiments/pretrained_backbone/frozen_qwen_seed42.pt",
+    "validation_action_accuracy": 0.140625
+  },
+  "finetuned_qwen": {
+    "checkpoint": "experiments/pretrained_backbone/finetuned_qwen_seed42.pt",
+    "validation_action_accuracy": 0.140625
+  },
+  "cnfg_qwen_transfer": {
+    "checkpoint": "experiments/pretrained_backbone/transfer_seed42.pt",
+    "train_action_accuracy": 0.23046875,
+    "validation_action_accuracy": 0.21875
+  }
+}

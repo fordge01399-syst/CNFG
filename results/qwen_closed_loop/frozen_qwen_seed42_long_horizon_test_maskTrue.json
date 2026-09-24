@@ -1,0 +1,41 @@
+{
+  "checkpoint": "experiments/pretrained_backbone/frozen_qwen_seed42.pt",
+  "split": "long_horizon_test",
+  "tasks": 5,
+  "mask": true,
+  "full_task_success": 0.0,
+  "invalid_action_rate": 0.0,
+  "mean_steps": 140.0,
+  "trajectories": [
+    {
+      "task": 0,
+      "success": false,
+      "steps": 140,
+      "invalid_actions": 0
+    },
+    {
+      "task": 1,
+      "success": false,
+      "steps": 140,
+      "invalid_actions": 0
+    },
+    {
+      "task": 2,
+      "success": false,
+      "steps": 140,
+      "invalid_actions": 0
+    },
+    {
+      "task": 3,
+      "success": false,
+      "steps": 140,
+      "invalid_actions": 0
+    },
+    {
+      "task": 4,
+      "success": false,
+      "steps": 140,
+      "invalid_actions": 0
+    }
+  ]
+}

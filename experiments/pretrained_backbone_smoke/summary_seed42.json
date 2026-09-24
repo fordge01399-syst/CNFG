@@ -1,0 +1,23 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "seed": 42,
+  "hidden_size": 896,
+  "train_rows": 256,
+  "validation_rows": 64,
+  "training_seconds": 75.8096489906311,
+  "frozen_qwen": {
+    "checkpoint": "experiments/pretrained_backbone_smoke/frozen_seed42.pt",
+    "train_accuracy": 0.23046875,
+    "validation_action_accuracy": 0.21875
+  },
+  "finetuned_qwen": {
+    "checkpoint": "experiments/pretrained_backbone_smoke/finetuned_seed42.pt",
+    "train_accuracy": 0.23046875,
+    "validation_action_accuracy": 0.21875
+  },
+  "cnfg_qwen_transfer": {
+    "checkpoint": "experiments/pretrained_backbone_smoke/transfer_seed42.pt",
+    "train_accuracy": 0.23046875,
+    "validation_action_accuracy": 0.21875
+  }
+}
