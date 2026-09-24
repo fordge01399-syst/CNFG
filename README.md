@@ -168,3 +168,19 @@ python3 scripts/evaluate_qwen.py --checkpoint experiments/pretrained_backbone/fr
 ```
 
 هذا pilot محدود بسبب كلفة Qwen على CPU. نتيجة closed-loop المتاحة لـFrozen-Qwen على خمس مهام long-horizon هي نجاح 0% ومعدل أفعال غير صالحة 98.14% بدون قناع الصلاحية؛ لذلك لا يجوز تقديمه كتحسن. النتائج السابقة لـDAgger CNFG محفوظة منفصلة في `results/dagger_summary.json`.
+
+
+## Qwen→CNFG→DAgger hybrid pilot
+
+The hybrid pilot is implemented in `scripts/train_qwen_cnfg_dagger.py` and evaluated by `scripts/evaluate_qwen_cnfg.py`:
+
+```bash
+for seed in 42 43 44 45 46; do
+  python3 scripts/train_qwen_cnfg_dagger.py \
+    --out experiments/qwen_cnfg_dagger_seed${seed} \
+    --seed ${seed} --rounds 2 --episodes 4 --max-steps 20 --epochs 2
+done
+python3 scripts/aggregate_qwen_cnfg.py
+```
+
+The pilot used two tasks per seed and a 60-step evaluation limit. It produced 0% full-task success on both long-horizon and independent splits, with 27.5% mean invalid-action rate under the validity mask. This is an underpowered feasibility result, not a final claim about Qwen transfer. A larger mixed DAgger run with warm-start and matched evaluation budget is required.

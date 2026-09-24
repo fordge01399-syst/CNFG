@@ -1,0 +1,9 @@
+{
+  "seed": 44,
+  "rounds": 2,
+  "episodes_per_round": 4,
+  "rows": 155,
+  "training_seconds": 56.11961317062378,
+  "model_parameters": 224552,
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct"
+}

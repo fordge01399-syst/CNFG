@@ -87,3 +87,21 @@ python3 -m pytest -q tests
 
 [1]: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct "Qwen2.5-0.5B-Instruct model card"
 [2]: https://github.com/QwenLM/Qwen2.5 "Qwen2.5 official repository"
+
+
+## 17. Qwen representation → CNFG composition → recurrent memory → DAgger pilot
+
+نُفذ المسار المقترح فعليًا باستخدام نموذج Qwen مجمد كمستخرج تمثيل، ثم projection وCNFG unary/pair composition وGRU memory ورأس أفعال، مع جمع on-policy وإعادة تسمية الحالات من planner للحالة الفعلية. استُخدمت خمس بذور (42–46)، جولتان، 4 حلقات لكل جولة، و20 خطوة جمع لكل حلقة. هذا **pilot صغير** لتثبيت المسار وليس البديل النهائي عن DAgger السابق واسع العينة.
+
+| Split | Seeds | Tasks/seed | Full task success | Invalid-action rate |
+|---|---:|---:|---:|---:|
+| Long horizon | 5 | 2 | **0.0% ± 0.0%** | 27.5% ± 25.2% |
+| Final independent | 5 | 2 | **0.0% ± 0.0%** | 27.5% ± 25.2% |
+
+استخدم التقييم قناع الصلاحية، وحدًا قدره 60 خطوة، ومهمتين لكل seed؛ لذلك لا يجوز مقارنة هذه النسب مباشرةً بنتيجة DAgger الأساسية التي استخدمت عدد مهام وحدود خطوات مختلفة. النتيجة السلبية مع ذلك مهمة: نقل تمثيل Qwen إلى CNFG لا ينتج Agent قويًا تلقائيًا، وحتى بعد DAgger محدود، لم يصل النموذج إلى الهدف في هذا pilot. السبب الأرجح هو صغر مجموعة حالات DAgger، قصر collection horizon، وعدم وجود warm-start من سياسة CNFG v4 داخل projection الجديد.
+
+الاستنتاج الحالي هو أن فرضية **Qwen representation → CNFG → DAgger** أصبحت قابلة للتشغيل ومختبرة، لكنها لم تُثبت تحسنًا. قبل إصدار حكم نهائي يلزم تنفيذ mixed DAgger أكبر، مع warm-start من CNFG+DAgger، وجمع 100–500 حلقة لكل seed، وتوحيد عدد المهام وحد الخطوات مع baseline، ثم اختيار checkpoint من validation rollout فقط. لا أرفع هذه النتيجة إلى ادعاء فشل Qwen العام لأنها underpowered، ولا أرفعها إلى نجاح.
+
+## 18. Reproducibility artifacts for the hybrid pilot
+
+الكود موجود في `scripts/train_qwen_cnfg_dagger.py` و`scripts/evaluate_qwen_cnfg.py` و`scripts/aggregate_qwen_cnfg.py`. checkpoints الخمسة موجودة تحت `experiments/qwen_cnfg_dagger_seed{42..46}/`، والنتائج الخام تحت `results/qwen_cnfg_dagger/`. الملخص القابل للقراءة هو `results/qwen_cnfg_dagger/summary_five_seed.json`.

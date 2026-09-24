@@ -1,0 +1,18 @@
+{
+  "long": {
+    "n_seeds": 5,
+    "tasks_per_seed": 2,
+    "success_mean": 0.0,
+    "success_sd": 0.0,
+    "invalid_mean": 0.275,
+    "invalid_sd": 0.25152313787977615
+  },
+  "independent": {
+    "n_seeds": 5,
+    "tasks_per_seed": 2,
+    "success_mean": 0.0,
+    "success_sd": 0.0,
+    "invalid_mean": 0.275,
+    "invalid_sd": 0.25152313787977615
+  }
+}
